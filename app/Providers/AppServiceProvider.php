@@ -27,10 +27,12 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         Paginator::useBootstrap();
 
+
         if (Schema::hasTable('about_companies')) {
             $about_company = AboutCompany::all()->first();
             View::share('about_company', $about_company);
         }
+
 
         Blade::directive('auth_access', function ($expression) {
             return "<?php if (in_array($expression,auth()->user()->getDirectPermissions()->pluck('name')->toArray())) { ?>";
