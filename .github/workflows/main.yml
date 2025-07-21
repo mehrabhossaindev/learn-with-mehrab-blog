@@ -65,6 +65,12 @@ jobs:
       - name: Install dependencies
         run: |
           composer install --prefer-dist --no-interaction --no-scripts
+
+      - name: Wait for MySQL
+        run: sleep 15
+
+      - name: Install dependencies
+        run: |
           php artisan key:generate
           php artisan migrate --env=testing
 
