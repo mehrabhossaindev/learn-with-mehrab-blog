@@ -69,7 +69,7 @@ jobs:
       - name: Wait for MySQL
         run: sleep 15
 
-      - name: Install dependencies
+      - name: Key Genarate and Migrate
         run: |
           php artisan key:generate
           php artisan migrate --env=testing
